@@ -1,7 +1,32 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(mkdir -p /Users/toyoharukohyama/Documents/streamlit_handson_package/app_pages)",
+      "Bash(lsof -nP -iTCP -sTCP:LISTEN)",
+      "Bash(mkdir -p /private/tmp/claude-501/-Users-toyoharukohyama-Documents-streamlit-handson-package/e0c5ea64-faa2-402e-a927-b3e36df9789a/scratchpad/key_extract)",
+      "Bash(unzip -o \"/Users/toyoharukohyama/Documents/streamlit_handson_package/streamlit_webapp_intro_training.key\" -d .)",
+      "Read(//Applications/**)",
+      "Bash(qlmanage -p \"/Users/toyoharukohyama/Documents/streamlit_handson_package/streamlit_webapp_intro_training.key\")",
+      "Bash(identify /private/tmp/claude-501/-Users-toyoharukohyama-Documents-streamlit-handson-package/e0c5ea64-faa2-402e-a927-b3e36df9789a/scratchpad/key_extract/preview.jpg)",
+      "Bash(sips -g pixelWidth -g pixelHeight /private/tmp/claude-501/-Users-toyoharukohyama-Documents-streamlit-handson-package/e0c5ea64-faa2-402e-a927-b3e36df9789a/scratchpad/key_extract/preview.jpg)",
+      "Bash(pkill -f qlmanage)",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/private/tmp/claude-501/-Users-toyoharukohyama-Documents-streamlit-handson-package/e0c5ea64-faa2-402e-a927-b3e36df9789a/scratchpad/key_extract/preview.jpg\")",
+      "Bash(mdls -name kMDItemNumberOfPages /private/tmp/claude-501/-Users-toyoharukohyama-Documents-streamlit-handson-package/e0c5ea64-faa2-402e-a927-b3e36df9789a/scratchpad/deck.pdf)",
+      "Bash(python3 -c ' *)",
+      "Bash(pip3 install *)",
+      "Bash(mkdir -p /private/tmp/claude-501/-Users-toyoharukohyama-Documents-streamlit-handson-package/e0c5ea64-faa2-402e-a927-b3e36df9789a/scratchpad/slides)",
+      "Bash(unzip -l streamlit_webapp_intro_training.key)",
+      "Read(//private/tmp/**)",
+      "Bash(unzip -q /Users/toyoharukohyama/Documents/streamlit_handson_package/streamlit_webapp_intro_training.key)",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(brew install *)",
+      "Bash(gh issue create --repo codetea-ping999/streamlit_handson_package --title README/HANDSON_GUIDEの説明がapp.pyの実装と一致していない --body ' *)"
+    ],
+    "additionalDirectories": [
+      "/Users/toyoharukohyama/Documents/streamlit_handson_package"
     ]
   }
 }
