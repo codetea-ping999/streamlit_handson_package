@@ -7,15 +7,11 @@
 
 本ハンズオンでは、講義用スライドの内容に沿って、Pythonのみで動作する簡易Webアプリケーションを段階的に作成します。
 
-最終的には、CSV形式の売上データを読み込み、次の機能を持つ「売上分析アプリ」を完成させます。
+最終的には、`app.py` で起動するマルチページアプリの中で、基礎から応用までのレッスンに加えて、次の3つの完成版プロジェクトを完成させます。
 
-- CSVファイルのアップロード
-- 表形式でのデータ確認
-- 部署・期間による絞り込み
-- 合計売上、合計件数、1件あたり売上の表示
-- 部署別・カテゴリ別の棒グラフ
-- 日別売上の折れ線グラフ
-- 絞り込み結果のCSVダウンロード
+- **天気予報アプリ** - 外部APIとの連携、エラーハンドリング
+- **在庫管理システム** - Session Stateを使ったDataFrameのCRUD操作
+- **顧客分析ダッシュボード** - RFM分析・LTV計算などの高度な集計と可視化
 
 ### 想定時間
 
@@ -33,12 +29,24 @@
 
 ```text
 streamlit_handson_package/
-├── HANDSON_GUIDE.md            # 本手順書
-├── requirements.txt            # 使用ライブラリ
-├── app.py                      # 完成版アプリ
+├── HANDSON_GUIDE.md             # 本手順書
+├── requirements.txt             # 使用ライブラリ
+├── app.py                       # マルチページ・ナビゲーター（起動の入口）
+├── app_pages/                   # app.py が束ねる各ページ
+│   ├── home.py                  # ホーム
+│   ├── 01_hello_streamlit.py
+│   ├── 02_widgets.py
+│   ├── 03_csv_upload.py
+│   ├── 04_sales_dashboard.py
+│   ├── 05_form.py
+│   ├── 06_session_state.py
+│   ├── 07_cache.py
+│   ├── 08_weather_app.py        # 完成版プロジェクト：天気予報アプリ
+│   ├── 09_inventory_system.py   # 完成版プロジェクト：在庫管理システム
+│   └── 10_customer_analytics.py # 完成版プロジェクト：顧客分析ダッシュボード
 ├── data/
-│   └── sample_sales.csv        # 演習用データ
-├── sample_code/                # 各ステップのサンプルコード
+│   └── sample_sales.csv         # 演習用データ
+├── sample_code/                 # 各ステップのサンプルコード（app_pages/01〜07と同内容を単体実行可能）
 │   ├── 01_hello_streamlit.py
 │   ├── 02_widgets.py
 │   ├── 03_csv_upload.py
@@ -46,7 +54,7 @@ streamlit_handson_package/
 │   ├── 05_form.py
 │   ├── 06_session_state.py
 │   └── 07_cache.py
-└── sample_code_answers/        # 演習の実装例（参考）
+└── sample_code_answers/         # 演習の実装例（参考）
     ├── 01_hello_streamlit_answer.py
     ├── 02_widgets_answer.py
     ├── 03_csv_upload_answer.py
@@ -421,7 +429,7 @@ streamlit run sample_code/07_cache.py
 
 ---
 
-## 11. 最終演習：売上分析アプリ
+## 11. 最終演習：完成版プロジェクト
 
 講義スライド対応：ミニ演習「売上分析アプリ」
 
@@ -431,53 +439,52 @@ streamlit run sample_code/07_cache.py
 streamlit run app.py
 ```
 
-### 11.2 完成版の機能
+サイドバーの「完成版プロジェクト」セクションから、以下の3つのアプリを開けます。
 
-- サンプルCSVまたはアップロードCSVを読み込む
-- 必須列を検証する
-- 部署と対象期間で絞り込む
-- KPIを3項目表示する
-- 部署別・商品カテゴリ別・日別で可視化する
-- 明細を表示する
-- 絞り込み結果をCSV出力する
+### 11.2 08 天気予報アプリ（`app_pages/08_weather_app.py`）
 
-### 11.3 コードリーディングの順番
+- 外部API（`requests`）から天気データを取得する
+- APIレスポンスを整形して表示する
+- 通信エラー・不正な入力に対するエラーハンドリングを行う
 
-1. `st.set_page_config()`：画面設定
-2. `load_csv()`：データ読み込みと検証
-3. `st.sidebar`：入力条件
-4. `filtered_df`：データ絞り込み
-5. `st.metric()`：指標表示
-6. `st.tabs()` / `st.columns()`：レイアウト
-7. `st.bar_chart()` / `st.line_chart()`：可視化
-8. `st.download_button()`：CSV出力
+### 11.3 09 在庫管理システム（`app_pages/09_inventory_system.py`）
 
-### 11.4 発展課題
+- `st.session_state` で在庫データを保持する
+- 商品の追加・編集・削除（CRUD）を行う
+- 入力値を検証する
+
+### 11.4 10 顧客分析ダッシュボード（`app_pages/10_customer_analytics.py`）
+
+- `numpy`を使ったRFM分析・LTV計算などの集計を行う
+- 複数条件でのフィルタリングを行う
+- 複数のグラフを組み合わせてダッシュボード化する
+
+### 11.5 コードリーディングの順番（共通）
+
+1. `st.set_page_config()` / `import` 文：画面設定と依存ライブラリ
+2. `st.session_state` の初期化：状態管理が必要な箇所
+3. `st.sidebar` / `st.tabs()` / `st.columns()`：入力条件とレイアウト
+4. データの絞り込み・集計処理
+5. `st.metric()` / `st.bar_chart()` / `st.line_chart()`：指標・可視化
+6. `st.form()` / `st.button()`：ユーザー操作の受け口
+
+### 11.6 発展課題
 
 #### 課題A：担当者フィルター
 
-サイドバーに担当者の複数選択を追加します。
+04売上分析ダッシュボードのサイドバーに担当者の複数選択を追加します。
 
 #### 課題B：最高売上の表示
 
-最大売上の担当者と金額を `st.metric()` または `st.success()` で表示します。
+04売上分析ダッシュボードで、最大売上の担当者と金額を `st.metric()` または `st.success()` で表示します。
 
 #### 課題C：CSVの入力エラー表示
 
-売上や件数に数値以外が含まれた場合、削除件数を警告表示します。
+03CSV読込・04売上分析ダッシュボードで、売上や件数に数値以外が含まれた場合に削除件数を警告表示します。
 
-#### 課題D：マルチページ化
+#### 課題D：新しい完成版プロジェクトを作る
 
-次の構成へ変更します。
-
-```text
-streamlit-app/
-├── app.py
-└── pages/
-    ├── 01_データ確認.py
-    ├── 02_グラフ表示.py
-    └── 03_日報入力.py
-```
+08〜10のような「完成版プロジェクト」を自分でもう1つ作り、`app_pages/11_your_project.py` として追加し、`app.py` の `pages` 辞書に登録してみましょう。
 
 ---
 
@@ -557,7 +564,7 @@ df = pd.read_csv(sample_path)
 - [ ] `st.metric()` で指標を表示できた
 - [ ] 棒グラフと折れ線グラフを表示できた
 - [ ] Form、Session State、Cacheの役割を説明できる
-- [ ] 売上分析アプリを起動・操作できた
+- [ ] 完成版プロジェクト（天気予報アプリ・在庫管理システム・顧客分析ダッシュボード）のいずれかを起動・操作できた
 
 ---
 

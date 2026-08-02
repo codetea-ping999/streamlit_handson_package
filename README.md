@@ -1,7 +1,7 @@
 # Streamlit ハンズオン教材
 
 Pythonのみでウェブアプリケーションを開発するためのハンズオン教材です。  
-**7つのステップで段階的に学び、最終的に実務的な売上分析アプリを完成させます。**
+**マルチページアプリ `app.py` の中で、基礎から応用までのレッスンと3つの完成版プロジェクトを体験できます。**
 
 ## 📚 このコースで学べること
 
@@ -12,7 +12,7 @@ Pythonのみでウェブアプリケーションを開発するためのハン�
 - **フォーム設計**：複数入力をまとめて処理
 - **セッション管理**：Session Stateで値を保持
 - **パフォーマンス最適化**：@st.cache_dataで処理を高速化
-- **実装スキル**：実務的なダッシュボードアプリの構築
+- **実装スキル**：天気予報アプリ・在庫管理システム・顧客分析ダッシュボードの構築
 
 ### 想定時間：100〜120分 | 対象：Python基礎を習得した方
 
@@ -25,10 +25,22 @@ streamlit_handson_package/
 ├── HANDSON_GUIDE.md              # 詳細な学習手順書 ← まずはこちらをお読みください
 ├── README.md                      # このファイル
 ├── requirements.txt               # 必要なライブラリ
-├── app.py                         # 完成版：売上分析アプリ
+├── app.py                         # マルチページ・ナビゲーター（起動の入口）
+├── app_pages/                     # app.py が束ねる各ページ
+│   ├── home.py                    # ホーム（学習ガイド）
+│   ├── 01_hello_streamlit.py      # 基礎講座：画面表示
+│   ├── 02_widgets.py              # 基礎講座：入力UI
+│   ├── 03_csv_upload.py           # 基礎講座：CSV読込
+│   ├── 04_sales_dashboard.py      # 応用講座：売上分析
+│   ├── 05_form.py                 # 応用講座：フォーム
+│   ├── 06_session_state.py        # 高度な機能：セッション状態
+│   ├── 07_cache.py                # 高度な機能：キャッシュ
+│   ├── 08_weather_app.py          # 完成版プロジェクト：天気予報アプリ
+│   ├── 09_inventory_system.py     # 完成版プロジェクト：在庫管理システム
+│   └── 10_customer_analytics.py   # 完成版プロジェクト：顧客分析ダッシュボード
 ├── data/
 │   └── sample_sales.csv           # 演習用データ（実際のビジネスデータ）
-├── sample_code/                   # 7つのステップ別サンプルコード
+├── sample_code/                   # レッスン01〜07に対応するステップ別サンプルコード
 │   ├── 01_hello_streamlit.py      # ステップ1：基本的な画面表示
 │   ├── 02_widgets.py              # ステップ2：入力ウィジェット
 │   ├── 03_csv_upload.py           # ステップ3：CSVアップロード
@@ -45,6 +57,8 @@ streamlit_handson_package/
     ├── 06_session_state_answer.py
     └── 07_cache_answer.py
 ```
+
+`sample_code/` は `app_pages/01〜07` と同じ内容を単体で実行できるようにしたファイルです。`streamlit run sample_code/01_hello_streamlit.py` のように1レッスンだけ動かして写経したいときに使います。
 
 ---
 
@@ -81,81 +95,47 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 4. 完成版アプリを実行
+### 4. アプリを起動
 
 ```bash
 streamlit run app.py
 ```
 
-ブラウザが自動で開き、`http://localhost:8501` にアクセスします。
+ブラウザが自動で開き、`http://localhost:8501` にアクセスします。サイドバーからレッスンを選んで学習を進めてください。
 
 ---
 
 ## 📖 学習の進め方
 
-### Step 1：Hello Streamlit（画面表示）
-
-```bash
-streamlit run sample_code/01_hello_streamlit.py
-```
-
-Streamlitで画面にテキストを表示する基本を学びます。
-
-### Step 2：入力ウィジェット（ユーザー操作）
-
-```bash
-streamlit run sample_code/02_widgets.py
-```
-
-テキスト入力、スライダー、ドロップダウン、複数選択など、さまざまな入力UIを体験します。
-
-### Step 3：CSVアップロード（ファイル操作）
-
-```bash
-streamlit run sample_code/03_csv_upload.py
-```
-
-ユーザーがアップロードしたCSVファイルを読み込み、pandasで操作します。
-
-### Step 4：集計・指標・グラフ（データ可視化）
-
-```bash
-streamlit run sample_code/04_sales_dashboard.py
-```
-
-`groupby()`で集計し、KPI指標とグラフで可視化します。
-
-### Step 5：フォーム（複数入力の管理）
-
-```bash
-streamlit run sample_code/05_form.py
-```
-
-複数の入力項目を「送信」ボタンでまとめて処理します。
-
-### Step 6：Session State（値の保持）
-
-```bash
-streamlit run sample_code/06_session_state.py
-```
-
-Streamlitの再実行モデルを理解し、セッション内で値を保持します。
-
-### Step 7：キャッシング（処理の高速化）
-
-```bash
-streamlit run sample_code/07_cache.py
-```
-
-`@st.cache_data`で重い処理をキャッシュし、パフォーマンスを最適化します。
-
-### 最終演習：売上分析アプリ
-
 ```bash
 streamlit run app.py
 ```
 
-すべてのスキルを組み合わせた実務的なダッシュボードアプリです。
+上記コマンドでアプリを起動すると、左側のサイドバーからすべてのレッスン・プロジェクトへ移動できます。各ページは `sample_code/` の同名ファイルを単体実行しても同じ内容を確認できます。
+
+### 基礎講座（レッスン01〜03）
+
+- **01 Hello Streamlit** - `st.title()` / `st.write()` など画面表示の基本
+- **02 入力UI** - テキスト入力、スライダー、ドロップダウン、複数選択などのウィジェット
+- **03 CSV読込** - ファイルアップロードとpandasによるデータ処理
+
+### 応用講座（レッスン04〜05）
+
+- **04 売上分析** - `groupby()`で集計し、KPI指標とグラフで可視化
+- **05 フォーム** - 複数の入力項目を「送信」ボタンでまとめて処理
+
+### 高度な機能（レッスン06〜07）
+
+- **06 セッション状態** - Streamlitの再実行モデルとSession Stateによる値の保持
+- **07 キャッシュ** - `@st.cache_data`で重い処理をキャッシュし、パフォーマンスを最適化
+
+### 完成版プロジェクト（レッスン08〜10）
+
+これまでのスキルを組み合わせた実践的なアプリです。
+
+- **08 天気予報アプリ** - 外部API（`requests`）連携、レスポンス処理、エラーハンドリング
+- **09 在庫管理システム** - Session Stateを使ったDataFrameのCRUD操作
+- **10 顧客分析ダッシュボード** - `numpy`を使ったRFM分析・LTV計算などの高度な集計と可視化
 
 ---
 
