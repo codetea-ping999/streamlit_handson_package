@@ -47,3 +47,4 @@ streamlit run app.py
 ブラウザで `http://localhost:8501` を開きます。
 
 詳細は [HANDSON_GUIDE.md](HANDSON_GUIDE.md) を参照してください。
+# streamlit_handson_package
