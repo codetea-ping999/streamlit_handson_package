@@ -49,3 +49,4 @@ streamlit run app.py
 詳細は [HANDSON_GUIDE.md](HANDSON_GUIDE.md) を参照してください。
 # streamlit_handson_package
 # streamlit_handson_package
+# streamlit_handson_package
