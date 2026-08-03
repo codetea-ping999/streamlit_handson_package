@@ -103,6 +103,8 @@ streamlit run app.py
 
 ブラウザが自動で開き、`http://localhost:8501` にアクセスします。サイドバーからレッスンを選んで学習を進めてください。
 
+![アプリ起動後のホーム画面](images/screenshots/00_app_top.png)
+
 ---
 
 ## 📖 学習の進め方
@@ -119,15 +121,21 @@ streamlit run app.py
 - **02 入力UI** - テキスト入力、スライダー、ドロップダウン、複数選択などのウィジェット
 - **03 CSV読込** - ファイルアップロードとpandasによるデータ処理
 
+![02 入力UIの画面](images/screenshots/02_widgets.png)
+
 ### 応用講座（レッスン04〜05）
 
 - **04 売上分析** - `groupby()`で集計し、KPI指標とグラフで可視化
 - **05 フォーム** - 複数の入力項目を「送信」ボタンでまとめて処理
 
+![04 売上分析ダッシュボードの画面](images/screenshots/04_sales_dashboard.png)
+
 ### 高度な機能（レッスン06〜07）
 
 - **06 セッション状態** - Streamlitの再実行モデルとSession Stateによる値の保持
 - **07 キャッシュ** - `@st.cache_data`で重い処理をキャッシュし、パフォーマンスを最適化
+
+![07 キャッシュの画面](images/screenshots/07_cache.png)
 
 ### 完成版プロジェクト（レッスン08〜10）
 
@@ -136,6 +144,8 @@ streamlit run app.py
 - **08 天気予報アプリ** - 外部API（`requests`）連携、レスポンス処理、エラーハンドリング
 - **09 在庫管理システム** - Session Stateを使ったDataFrameのCRUD操作
 - **10 顧客分析ダッシュボード** - `numpy`を使ったRFM分析・LTV計算などの高度な集計と可視化
+
+![10 顧客分析ダッシュボードの画面](images/screenshots/10_customer_analytics.png)
 
 ---
 

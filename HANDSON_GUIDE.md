@@ -194,6 +194,8 @@ st.code("streamlit run app.py")
 
 StreamlitはPythonファイルを上から下へ実行し、`st.xxx()` の呼び出しを画面要素として描画します。
 
+![01 Hello Streamlitの画面](images/screenshots/01_hello_streamlit.png)
+
 ---
 
 ## 5. Step 2：入力ウィジェット
@@ -232,6 +234,8 @@ streamlit run sample_code/02_widgets.py
 - 経験年数を `st.number_input()` で入力
 - 受講目的を `st.text_area()` で入力
 - 入力内容を `st.json()` で表示
+
+![02 入力UIの画面（入力・実行後）](images/screenshots/02_widgets.png)
 
 ---
 
@@ -287,6 +291,8 @@ st.write("先頭5件")
 st.dataframe(df.head())
 ```
 
+![03 CSV読込の画面（アップロード後）](images/screenshots/03_csv_upload.png)
+
 ---
 
 ## 7. Step 4：集計・指標・グラフ
@@ -334,6 +340,8 @@ category_summary = df.groupby("商品カテゴリ")["売上"].sum()
 st.bar_chart(category_summary)
 ```
 
+![04 集計・指標・グラフの画面](images/screenshots/04_sales_dashboard.png)
+
 ---
 
 ## 8. Step 5：Form
@@ -363,6 +371,8 @@ with st.form("daily_report"):
 - 作業時間：`st.number_input()`
 - 完了状態：`st.radio()`
 - 優先度：`st.selectbox()`
+
+![05 Formの画面（送信後）](images/screenshots/05_form.png)
 
 ---
 
@@ -402,6 +412,8 @@ if "history" not in st.session_state:
 st.session_state.history.append(st.session_state.count)
 ```
 
+![06 Session Stateの画面（カウンター操作後）](images/screenshots/06_session_state.png)
+
 ---
 
 ## 10. Step 7：Cache
@@ -427,6 +439,8 @@ streamlit run sample_code/07_cache.py
 | `st.session_state` | ユーザー操作をまたいで値を保持 | カウンター、入力途中、チャット履歴 |
 | `st.cache_data` | 同じ計算結果を再利用 | CSV読込、API結果、集計処理 |
 
+![07 Cacheの画面（読込完了後）](images/screenshots/07_cache.png)
+
 ---
 
 ## 11. 最終演習：完成版プロジェクト
@@ -447,17 +461,23 @@ streamlit run app.py
 - APIレスポンスを整形して表示する
 - 通信エラー・不正な入力に対するエラーハンドリングを行う
 
+![08 天気予報アプリの画面](images/screenshots/08_weather_app.png)
+
 ### 11.3 09 在庫管理システム（`app_pages/09_inventory_system.py`）
 
 - `st.session_state` で在庫データを保持する
 - 商品の追加・編集・削除（CRUD）を行う
 - 入力値を検証する
 
+![09 在庫管理システムの画面](images/screenshots/09_inventory_system.png)
+
 ### 11.4 10 顧客分析ダッシュボード（`app_pages/10_customer_analytics.py`）
 
 - `numpy`を使ったRFM分析・LTV計算などの集計を行う
 - 複数条件でのフィルタリングを行う
 - 複数のグラフを組み合わせてダッシュボード化する
+
+![10 顧客分析ダッシュボードの画面](images/screenshots/10_customer_analytics.png)
 
 ### 11.5 コードリーディングの順番（共通）
 
