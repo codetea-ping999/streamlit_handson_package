@@ -134,6 +134,7 @@ with tab1:
         st.markdown("#### 📈 LTVの分布")
         ltv_bins = [0, 10000, 50000, 100000, 500000, 1000000]
         ltv_dist = pd.cut(df["LTV"], bins=ltv_bins).value_counts().sort_index()
+        ltv_dist.index = ltv_dist.index.astype(str)
         st.bar_chart(ltv_dist)
 
 # ========== TAB2: RFM分析 ==========
@@ -156,7 +157,7 @@ with tab2:
 
     # R: Recencyスコア（1-5）
     df_rfm["R_score"] = pd.qcut(
-        df_rfm["最終購買日前"],
+        df_rfm["最終購買日前"].rank(method="first"),
         q=5,
         labels=[5, 4, 3, 2, 1],
         duplicates="drop"
@@ -164,7 +165,7 @@ with tab2:
 
     # F: Frequencyスコア（1-5）
     df_rfm["F_score"] = pd.qcut(
-        df_rfm["購買回数"],
+        df_rfm["購買回数"].rank(method="first"),
         q=5,
         labels=[1, 2, 3, 4, 5],
         duplicates="drop"
@@ -172,7 +173,7 @@ with tab2:
 
     # M: Monetaryスコア（1-5）
     df_rfm["M_score"] = pd.qcut(
-        df_rfm["累計購買額"],
+        df_rfm["累計購買額"].rank(method="first"),
         q=5,
         labels=[1, 2, 3, 4, 5],
         duplicates="drop"
